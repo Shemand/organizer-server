@@ -3,5 +3,5 @@ module.exports = {
 	host : 'localhost',
 	user : 'root',
 	password : 'strike98',
-	database : 'timeBD'
+	database : 'timeDB'
 };

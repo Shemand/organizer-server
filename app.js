@@ -1,12 +1,22 @@
 var express = require('express');
 var sql = require('mysql');
-var passport = require('passport');
+var bodyParser = require('body-parser');
+var session = require('cookie-session');
+var cookieParser = require('cookie-parser');
+var passport = require('./app/extra/auth.js');
+var controller = require('./app/controllers/controller');
 
 var app = express();
-var db = sql.createPool(require('./sqlConnectionSettings.js'));
 
-app.get('/', require('./app/controllers/controller.js'));
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(cookieParser());
+app.use(session({secret : 'india'}));
 
-app.listen(8080, () => {
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', controller);
+
+app.listen(8081, () => {
 	console.log('server started');
 });

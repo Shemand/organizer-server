@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
-	require('../../models/contact').all(req.user.id, (result) => {
+	require('../../models/contact').add(req.user.id, req.body, (result) => {
 		res.send(JSON.stringify(result));
 	});
 };

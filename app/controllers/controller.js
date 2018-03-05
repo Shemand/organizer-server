@@ -3,8 +3,8 @@ var router = require('express').Router();
 router.get('/', require('./other/index'));
 
 router.get('/contact', require('./contact/get'));
-router.post('/contact', require('./contact/add'));
-router.put('/contact', require('./contact/edit'));
+router.post('/contact', require('./contact/post'));
+router.put('/contact', require('./contact/put'));
 // router.delete('/contact', require('./contact/delete'));
 
 router.get('/event', require('./event/get'));
@@ -22,8 +22,8 @@ router.post('/user', require('./user/post'));
 router.put('/user', require('./user/put'));
 // router.delete('/user', require('./user/delete'));
 
-router.get('/login', require('./login/get'));       // форма
-router.post('/login', require('./login/post'));     // создание сессии
-router.delete('/login', require('./login/delete')); // удаление сессии
+router.get('/login', require('./session/get'));       // форма
+router.post('/session', require('./session/post'));     // создание сессии
+router.delete('/session', require('./session/delete')); // удаление сессии
 
 module.exports = router;
